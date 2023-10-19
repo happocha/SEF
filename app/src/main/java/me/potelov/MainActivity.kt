@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.HapticFeedbackConstants
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.google.android.material.chip.Chip
 import java.util.concurrent.TimeUnit
 import kotlinx.coroutines.FlowPreview
@@ -97,11 +98,14 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
+            tvStopMusic.setOnClickListener {
+                mediaPlayer?.release()
+            }
         }
         requestPermissions()
         mediaPlayer = MediaPlayer.create(this, R.raw.t).apply {
             setOnCompletionListener {
-
+                binding.tvStopMusic.isVisible = false
             }
         }
         callState
@@ -166,13 +170,14 @@ class MainActivity : AppCompatActivity() {
     private fun startTimer() {
         timer?.cancel()
         Log.d("vova", "start")
-        timer = object : CountDownTimer(TimeUnit.MINUTES.toMillis(4), 1000) {
+        timer = object : CountDownTimer(TimeUnit.MINUTES.toMillis(1), 1000) {
             override fun onTick(millisUntilFinished: Long) {
             }
 
             override fun onFinish() {
                 Log.d("vova", "onFinish")
                 mediaPlayer?.start()
+                binding.tvStopMusic.isVisible = true
             }
         }
 

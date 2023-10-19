@@ -58,13 +58,14 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textview.MaterialTextView
+    <com.google.android.material.chip.Chip
         android:id="@+id/tv_stop_music"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="stop music"
         android:layout_margin="16dp"
         android:padding="8dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/btn_start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/til_phone"
