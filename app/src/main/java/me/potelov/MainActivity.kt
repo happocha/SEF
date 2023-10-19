@@ -170,7 +170,7 @@ class MainActivity : AppCompatActivity() {
     private fun startTimer() {
         timer?.cancel()
         Log.d("vova", "start")
-        timer = object : CountDownTimer(TimeUnit.MINUTES.toMillis(1), 1000) {
+        timer = object : CountDownTimer(TimeUnit.MINUTES.toMillis(4), 1000) {
             override fun onTick(millisUntilFinished: Long) {
             }
 
